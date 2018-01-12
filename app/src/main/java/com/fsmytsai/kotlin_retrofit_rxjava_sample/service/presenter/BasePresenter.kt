@@ -11,19 +11,19 @@ import io.reactivex.schedulers.Schedulers
  * Created by tsaiminyuan on 2017/12/15.
  */
 open class BasePresenter {
-    val apiStores = ApiClient.instance.getServer()
-    private val compositeDisposable = CompositeDisposable()
+    protected val mApiStores = ApiClient.instance.getServer()
+    private val mCompositeDisposable = CompositeDisposable()
 
     fun onStop(){
-        compositeDisposable.clear()
+        mCompositeDisposable.clear()
     }
 
     fun onDestroy() {
-        compositeDisposable.dispose()
+        mCompositeDisposable.dispose()
     }
 
     fun <M> addSubscription(observable: Observable<M>, subscriber: DisposableObserver<M>) {
-        compositeDisposable.add(observable
+        mCompositeDisposable.add(observable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(subscriber))
