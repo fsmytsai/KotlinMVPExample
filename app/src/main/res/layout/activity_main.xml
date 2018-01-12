@@ -1,58 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="30dp"
     tools:context="com.fsmytsai.kotlin_retrofit_rxjava_sample.ui.activity.MainActivity">
 
-    <RelativeLayout
+    <EditText
+        android:id="@+id/et_main_account"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="請輸入帳號"
+        android:inputType="text" />
 
-        <TextView
-            android:id="@+id/tv_GetResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GetResult"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:onClick="testGet"
-            android:text="TestGet"
-            android:textAllCaps="false" />
-    </RelativeLayout>
-
-    <RelativeLayout
+    <EditText
+        android:id="@+id/et_main_password"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="請輸入密碼"
+        android:inputType="textPassword" />
 
-        <TextView
-            android:id="@+id/tv_PostResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PostResult"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:onClick="testPost"
-            android:text="TestPost"
-            android:textAllCaps="false" />
-    </RelativeLayout>
+    <Button
+        android:id="@+id/bt_main_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/black"
+        android:onClick="login"
+        android:text="登入"
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
 </LinearLayout>
