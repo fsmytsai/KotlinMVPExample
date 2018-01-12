@@ -1,19 +1,45 @@
 package com.fsmytsai.kotlin_retrofit_rxjava_sample.service.presenter
 
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.model.MyMarkers
+import com.fsmytsai.kotlin_retrofit_rxjava_sample.model.User
 import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.retrofit.ApiCallback
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.view.GenericView
+import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.view.MainView
 
 /**
- * Created by tsaiminyuan on 2017/12/15.
- */
-class MainPresenter(private val myMarkersView: GenericView<MyMarkers>,
-                    private val test400ErrorView: GenericView<String>) : BasePresenter() {
-    fun getMyMarkers() {
-        addSubscription(apiStores.getMyMarkers(), ApiCallback(myMarkersView))
+* Created by fsmytsai on 2017/12/15.
+*/
+class MainPresenter(private val mainView: MainView) : BasePresenter() {
+
+    fun getUserData() {
+        addSubscription(mApiStores.getUserData(), object : ApiCallback<User>() {
+            override fun onSuccess(model: User) {
+                mainView.getUserDataSuccess(model)
+            }
+
+            override fun onFailure(errorList: ArrayList<String>) {
+                mainView.onFailure(errorList)
+            }
+
+            override fun onFinish() {
+                mainView.getUserDataFinish()
+            }
+
+        })
     }
 
-    fun get400ErrorByPost(DataList: List<String>) {
-        addSubscription(apiStores.get400ErrorByPost(DataList), ApiCallback(test400ErrorView))
+    fun login(account: String, password: String) {
+        addSubscription(mApiStores.login(account, password), object : ApiCallback<String>() {
+            override fun onSuccess(model: String) {
+                mainView.loginSuccess(model)
+            }
+
+            override fun onFailure(errorList: ArrayList<String>) {
+                mainView.onFailure(errorList)
+            }
+
+            override fun onFinish() {
+                mainView.loginFinish()
+            }
+
+        })
     }
 }
