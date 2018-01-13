@@ -20,7 +20,7 @@ class MainPresenter(private val mainView: MainView) : BasePresenter() {
             }
 
             override fun onFinish() {
-                mainView.getUserDataFinish()
+
             }
 
         })

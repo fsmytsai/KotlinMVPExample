@@ -9,5 +9,4 @@ interface MainView : BaseView {
     fun loginSuccess(resMessage: String)
     fun loginFinish()
     fun getUserDataSuccess(userData: User)
-    fun getUserDataFinish()
 }
