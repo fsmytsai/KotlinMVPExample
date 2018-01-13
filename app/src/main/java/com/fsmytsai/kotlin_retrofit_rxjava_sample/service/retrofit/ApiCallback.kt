@@ -7,8 +7,8 @@ import java.net.UnknownHostException
 
 
 /**
-* Created by fsmytsai on 2017/12/17.
-*/
+ * Created by fsmytsai on 2017/12/17.
+ */
 abstract class ApiCallback<M> : DisposableObserver<M>() {
 
     override fun onComplete() {
@@ -24,21 +24,19 @@ abstract class ApiCallback<M> : DisposableObserver<M>() {
         when (t) {
             is HttpException -> {
                 val code = t.code()
-                var msg = t.response().errorBody()?.string()
-                if (code == 502 || code == 404)
-                    msg = "伺服器異常，請稍後再試"
+                if (code == 400)
+                    errorList.addAll(Gson().fromJson(t.response().errorBody()?.string()!!, ArrayList<String>()::class.java))
+                else if (code == 502 || code == 404)
+                    errorList.add("伺服器異常，請稍後再試")
                 else if (code == 500)
-                    msg = "伺服器錯誤，請聯絡開發人員"
-                errorList.add(msg!!)
-                onFailure(errorList)
+                    errorList.add("伺服器錯誤，請聯絡開發人員")
             }
-            is UnknownHostException -> {
-                errorList.add("請檢查網路連線")
-                onFailure(errorList)
-            }
-            else -> onFailure(Gson().fromJson(t.toString(), ArrayList<String>()::class.java))
+            is UnknownHostException -> errorList.add("請檢查網路連線")
+            else -> errorList.add(t.toString())
         }
+        onFailure(errorList)
     }
+
     abstract fun onSuccess(model: M)
 
     abstract fun onFailure(errorList: ArrayList<String>)
