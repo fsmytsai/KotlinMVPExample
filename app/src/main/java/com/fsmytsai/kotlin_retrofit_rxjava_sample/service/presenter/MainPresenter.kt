@@ -42,4 +42,21 @@ class MainPresenter(private val mainView: MainView) : BasePresenter() {
 
         })
     }
+
+    fun logout() {
+        addSubscription(mApiStores.logout(), object : ApiCallback<String>() {
+            override fun onSuccess(model: String) {
+                mainView.logoutSuccess(model)
+            }
+
+            override fun onFailure(errorList: ArrayList<String>) {
+                mainView.onFailure(errorList)
+            }
+
+            override fun onFinish() {
+                mainView.logoutFinish()
+            }
+
+        })
+    }
 }
