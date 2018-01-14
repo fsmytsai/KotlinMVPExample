@@ -1,6 +1,9 @@
 package com.fsmytsai.kotlin_retrofit_rxjava_sample.ui.activity
 
+import android.graphics.Color
 import android.os.Bundle
+import android.support.design.widget.CoordinatorLayout
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.EditText
@@ -8,25 +11,31 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.fsmytsai.kotlin_retrofit_rxjava_sample.R
 import com.fsmytsai.kotlin_retrofit_rxjava_sample.model.User
+import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.app.SharedService
 import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.presenter.MainPresenter
 import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.view.MainView
 import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity<MainPresenter>(), MainView {
+
     var etMainAccount: EditText? = null
     var etMainPassword: EditText? = null
     var pbMainLoad: ProgressBar? = null
+    var cdntlMainRoot: CoordinatorLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        SharedService.mHttpDataSP = getSharedPreferences("HttpData", MODE_PRIVATE)
         initViews()
+        mPresenter.getUserData()
     }
 
     private fun initViews() {
         etMainAccount = findViewById(R.id.et_main_account)
         etMainPassword = findViewById(R.id.et_main_password)
         pbMainLoad = findViewById(R.id.pb_main_load)
+        cdntlMainRoot = findViewById(R.id.cdntl_main_root)
     }
 
     override fun createPresenter(): MainPresenter {
@@ -35,14 +44,21 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView {
 
     fun login(v: View) {
         pbMainLoad?.visibility = View.VISIBLE
-        mPresenter.login(etMainPassword?.text.toString(), etMainPassword?.text.toString())
+        mPresenter.login(etMainAccount?.text.toString(), etMainPassword?.text.toString())
+    }
+
+    fun logout(v: View) {
+        pbMainLoad?.visibility = View.VISIBLE
+        mPresenter.logout()
     }
 
     override fun onFailure(errorList: ArrayList<String>) {
         pbMainLoad?.visibility = View.GONE
-        if (errorList.size == 1)
-            Toast.makeText(this, errorList[0], Toast.LENGTH_SHORT).show()
-        else {
+        if (errorList.size == 1) {
+            val snackBar = Snackbar.make(cdntlMainRoot!!, errorList[0], Snackbar.LENGTH_LONG)
+            SharedService.setSnackbarColor(snackBar,Color.WHITE,Color.RED)
+            snackBar.show()
+        } else {
             var msg = ""
             for (i in 0 until errorList.size) {
                 msg += errorList[i]
@@ -58,7 +74,8 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView {
         }
     }
 
-    override fun loginSuccess(resMessage: String) {
+    override fun loginSuccess(token: String) {
+        SharedService.mHttpDataSP?.edit()?.putString("token", token)?.apply()
         Toast.makeText(this, "取得用戶資料中...", Toast.LENGTH_SHORT).show()
         mPresenter.getUserData()
     }
@@ -76,4 +93,11 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView {
                 .show()
     }
 
+    override fun logoutSuccess(resMessage: String) {
+        Toast.makeText(this, resMessage, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun logoutFinish() {
+        pbMainLoad?.visibility = View.GONE
+    }
 }
