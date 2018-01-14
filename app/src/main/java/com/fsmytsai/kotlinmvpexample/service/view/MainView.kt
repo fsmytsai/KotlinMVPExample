@@ -1,6 +1,6 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.service.view
+package com.fsmytsai.kotlinmvpexample.service.view
 
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.model.User
+import com.fsmytsai.kotlinmvpexample.model.User
 
 /**
  * Created by fsmytsai on 2017/12/15.

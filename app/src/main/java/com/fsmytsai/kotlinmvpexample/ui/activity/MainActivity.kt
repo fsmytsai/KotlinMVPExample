@@ -1,4 +1,4 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.ui.activity
+package com.fsmytsai.kotlinmvpexample.ui.activity
 
 import android.graphics.Color
 import android.os.Bundle
@@ -9,11 +9,11 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.R
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.model.User
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.app.SharedService
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.presenter.MainPresenter
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.view.MainView
+import com.fsmytsai.kotlinmvpexample.R
+import com.fsmytsai.kotlinmvpexample.model.User
+import com.fsmytsai.kotlinmvpexample.service.app.SharedService
+import com.fsmytsai.kotlinmvpexample.service.presenter.MainPresenter
+import com.fsmytsai.kotlinmvpexample.service.view.MainView
 import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity<MainPresenter>(), MainView {

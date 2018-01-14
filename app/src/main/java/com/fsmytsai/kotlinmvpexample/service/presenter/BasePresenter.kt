@@ -1,6 +1,6 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.service.presenter
+package com.fsmytsai.kotlinmvpexample.service.presenter
 
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.retrofit.ApiClient
+import com.fsmytsai.kotlinmvpexample.service.retrofit.ApiClient
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

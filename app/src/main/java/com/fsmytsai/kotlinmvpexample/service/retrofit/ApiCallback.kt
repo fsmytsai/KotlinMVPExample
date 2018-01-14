@@ -1,4 +1,4 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.service.retrofit
+package com.fsmytsai.kotlinmvpexample.service.retrofit
 
 import com.google.gson.Gson
 import io.reactivex.observers.DisposableObserver

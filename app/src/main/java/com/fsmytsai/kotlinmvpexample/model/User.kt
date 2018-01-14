@@ -1,4 +1,4 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.model
+package com.fsmytsai.kotlinmvpexample.model
 
 /**
 * Created by fsmytsai on 2018/1/13.

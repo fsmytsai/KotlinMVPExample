@@ -1,6 +1,6 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.service.retrofit
+package com.fsmytsai.kotlinmvpexample.service.retrofit
 
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.model.User
+import com.fsmytsai.kotlinmvpexample.model.User
 import io.reactivex.Observable
 import retrofit2.http.*
 

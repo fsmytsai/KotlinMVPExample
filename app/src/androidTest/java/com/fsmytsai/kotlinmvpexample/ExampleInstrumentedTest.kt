@@ -1,4 +1,4 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample
+package com.fsmytsai.kotlinmvpexample
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

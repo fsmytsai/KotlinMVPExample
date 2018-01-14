@@ -1,4 +1,4 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.service.view
+package com.fsmytsai.kotlinmvpexample.service.view
 
 /**
 * Created by fsmytsai on 2018/1/13.

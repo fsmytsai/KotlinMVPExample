@@ -1,6 +1,6 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.service.retrofit
+package com.fsmytsai.kotlinmvpexample.service.retrofit
 
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.app.SharedService
+import com.fsmytsai.kotlinmvpexample.service.app.SharedService
 import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

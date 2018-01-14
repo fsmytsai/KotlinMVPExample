@@ -1,4 +1,4 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample
+package com.fsmytsai.kotlinmvpexample
 
 import org.junit.Test
 

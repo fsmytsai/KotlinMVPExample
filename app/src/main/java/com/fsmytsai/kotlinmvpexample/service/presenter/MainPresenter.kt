@@ -1,8 +1,8 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.service.presenter
+package com.fsmytsai.kotlinmvpexample.service.presenter
 
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.model.User
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.retrofit.ApiCallback
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.view.MainView
+import com.fsmytsai.kotlinmvpexample.model.User
+import com.fsmytsai.kotlinmvpexample.service.retrofit.ApiCallback
+import com.fsmytsai.kotlinmvpexample.service.view.MainView
 
 /**
 * Created by fsmytsai on 2017/12/15.

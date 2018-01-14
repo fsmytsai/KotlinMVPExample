@@ -1,9 +1,9 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.service.app
+package com.fsmytsai.kotlinmvpexample.service.app
 
 import android.content.SharedPreferences
 import android.support.design.widget.Snackbar
 import android.widget.TextView
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.R
+import com.fsmytsai.kotlinmvpexample.R
 
 /**
  * Created by fsmytsai on 2018/1/14.

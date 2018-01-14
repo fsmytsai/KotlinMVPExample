@@ -1,7 +1,7 @@
-package com.fsmytsai.kotlin_retrofit_rxjava_sample.ui.activity
+package com.fsmytsai.kotlinmvpexample.ui.activity
 
 import android.support.v7.app.AppCompatActivity
-import com.fsmytsai.kotlin_retrofit_rxjava_sample.service.presenter.BasePresenter
+import com.fsmytsai.kotlinmvpexample.service.presenter.BasePresenter
 
 /**
 * Created by fsmytsai on 2018/1/13.

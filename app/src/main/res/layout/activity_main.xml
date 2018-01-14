@@ -4,7 +4,7 @@
     android:id="@+id/cdntl_main_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fsmytsai.kotlin_retrofit_rxjava_sample.ui.activity.MainActivity">
+    tools:context="com.fsmytsai.kotlinmvpexample.ui.activity.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
