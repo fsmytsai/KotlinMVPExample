@@ -1,9 +1,6 @@
 package com.fsmytsai.kotlinmvpexample.ui.activity
 
-import android.graphics.Color
 import android.os.Bundle
-import android.support.design.widget.CoordinatorLayout
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.EditText
@@ -21,7 +18,6 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView {
     var etMainAccount: EditText? = null
     var etMainPassword: EditText? = null
     var pbMainLoad: ProgressBar? = null
-    var cdntlMainRoot: CoordinatorLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +31,6 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView {
         etMainAccount = findViewById(R.id.et_main_account)
         etMainPassword = findViewById(R.id.et_main_password)
         pbMainLoad = findViewById(R.id.pb_main_load)
-        cdntlMainRoot = findViewById(R.id.cdntl_main_root)
     }
 
     override fun createPresenter(): MainPresenter {
@@ -54,24 +49,8 @@ class MainActivity : BaseActivity<MainPresenter>(), MainView {
 
     override fun onFailure(errorList: ArrayList<String>) {
         pbMainLoad?.visibility = View.GONE
-        if (errorList.size == 1) {
-            val snackBar = Snackbar.make(cdntlMainRoot!!, errorList[0], Snackbar.LENGTH_LONG)
-            SharedService.setSnackbarColor(snackBar,Color.WHITE,Color.RED)
-            snackBar.show()
-        } else {
-            var msg = ""
-            for (i in 0 until errorList.size) {
-                msg += errorList[i]
-                if (i != errorList.size - 1) {
-                    msg += "\n"
-                }
-            }
-            AlertDialog.Builder(this)
-                    .setTitle("錯誤訊息")
-                    .setMessage(msg)
-                    .setPositiveButton("知道了", null)
-                    .show()
-        }
+
+        handleErrorMessage(errorList)
     }
 
     override fun loginSuccess(token: String) {
